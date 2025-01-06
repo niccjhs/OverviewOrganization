@@ -7,11 +7,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,6 +24,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -51,9 +54,7 @@ fun MainScreen(){
     Scaffold(
         modifier = Modifier.fillMaxSize(),
 
-        topBar = {
-            TopBar()
-        },
+        topBar = {},
 
         bottomBar = {
             BottomNavigationBar{
@@ -98,35 +99,6 @@ fun MainScreen(){
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopBar(){
-    val scope = rememberCoroutineScope()
-
-    CenterAlignedTopAppBar(
-        title = {
-            Text("한눈에 조직도")
-        },
-
-        navigationIcon = {
-            IconButton(
-                onClick = {
-                    scope.launch {
-
-                    }
-                }
-            ){
-
-            }
-        },
-
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary
-        )
-    )
-}
-
 @Composable
 fun BottomNavigationBar(onNavigate: (String) -> Unit) {
     NavigationBar {
@@ -167,6 +139,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
 
             icon = {
                 Icon(
+
                     Icons.Filled.DateRange,
                     contentDescription = "부서조직도 리스트 아이콘"
                 )
