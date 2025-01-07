@@ -1,4 +1,4 @@
-package com.example.overvieworganization.screen
+package com.example.overvieworganization.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,13 +12,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.overvieworganization.viewModel.AppViewModel
 
-enum class PromoteScreen {
-    Promote
+enum class LocateScreen {
+    Locate
 }
 
 @Composable
-fun PromoteList() {
+fun LocateList() {
+    val viewModel: AppViewModel = AppViewModel.getInstance()
+    viewModel.setData("청사안내")
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -27,7 +30,7 @@ fun PromoteList() {
     ) {
         item {
             Text(
-                text = "홍보컨텐츠 화면",
+                text = "청사안내 화면",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier

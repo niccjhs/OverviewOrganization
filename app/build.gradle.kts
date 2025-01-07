@@ -41,7 +41,20 @@ android {
 
 dependencies {
     // Note: Navigation 사용하기 위해 추가
+//    implementation("androidx.navigation:navigation-compose:2.8.5")
     implementation(libs.androidx.navigation.compose)
+
+    // NOTE: viewModel() 사용하기 위해 추가
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+
+////    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+//    implementation(libs.androidx.lifecycle.runtime.compose)
+
+    // NOTE: observeAsState 사용하기 위해 추가
+//    implementation("androidx.compose.runtime:runtime-livedata:1.7.6")
+    implementation(libs.androidx.runtime.livedata)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

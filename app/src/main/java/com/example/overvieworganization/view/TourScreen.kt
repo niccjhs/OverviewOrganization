@@ -1,4 +1,4 @@
-package com.example.overvieworganization.screen
+package com.example.overvieworganization.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.overvieworganization.viewModel.AppViewModel
 
 enum class TourScreen {
     Tour
@@ -19,6 +20,8 @@ enum class TourScreen {
 
 @Composable
 fun TourList() {
+    val viewModel: AppViewModel = AppViewModel.getInstance()
+    viewModel.setData("관광안내")
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()

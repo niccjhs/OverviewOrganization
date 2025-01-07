@@ -14,31 +14,39 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.overvieworganization.screen.EmployeeList
-import com.example.overvieworganization.screen.EmployeeScreen
-import com.example.overvieworganization.screen.FirstList
-import com.example.overvieworganization.screen.FirstScreen
-import com.example.overvieworganization.screen.ImageList
-import com.example.overvieworganization.screen.ImageScreen
-import com.example.overvieworganization.screen.InfoList
-import com.example.overvieworganization.screen.InfoScreen
-import com.example.overvieworganization.screen.LocateList
-import com.example.overvieworganization.screen.LocateScreen
-import com.example.overvieworganization.screen.PromoteList
-import com.example.overvieworganization.screen.PromoteScreen
-import com.example.overvieworganization.screen.TourList
-import com.example.overvieworganization.screen.TourScreen
 import com.example.overvieworganization.ui.theme.OverviewOrganizationTheme
+import com.example.overvieworganization.view.EmployeeList
+import com.example.overvieworganization.view.EmployeeScreen
+import com.example.overvieworganization.view.HomeList
+import com.example.overvieworganization.view.HomeScreen
+import com.example.overvieworganization.view.ImageList
+import com.example.overvieworganization.view.ImageScreen
+import com.example.overvieworganization.view.InfoList
+import com.example.overvieworganization.view.InfoScreen
+import com.example.overvieworganization.view.LocateList
+import com.example.overvieworganization.view.LocateScreen
+import com.example.overvieworganization.view.PromoteList
+import com.example.overvieworganization.view.PromoteScreen
+import com.example.overvieworganization.view.TourList
+import com.example.overvieworganization.view.TourScreen
+import com.example.overvieworganization.viewModel.AppViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,19 +61,28 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(){
+fun MainScreen() {
     val navController = rememberNavController()
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
 
-        topBar = {},
+        topBar = {
+            TopBar {
+                navController.navigate(it) {
+                    launchSingleTop = true
+                    popUpTo(it) {
+                        inclusive = true
+                    }
+                }
+            }
+        },
 
         bottomBar = {
-            BottomNavigationBar{
-                navController.navigate(it){
+            BottomNavigationBar {
+                navController.navigate(it) {
                     launchSingleTop = true
-                    popUpTo(it){
+                    popUpTo(it) {
                         inclusive = true
                     }
                 }
@@ -74,11 +91,11 @@ fun MainScreen(){
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = FirstScreen.First.name,
+            startDestination = HomeScreen.Home.name,
             modifier = Modifier.padding(innerPadding),
         ) {
-            composable(route = FirstScreen.First.name) {
-                FirstList()
+            composable(route = HomeScreen.Home.name) {
+                HomeList()
             }
 
             composable(route = EmployeeScreen.Employee.name) {
@@ -108,6 +125,57 @@ fun MainScreen(){
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TopBar(onNavigate: (String) -> Unit) {
+    val viewModel: AppViewModel = AppViewModel.getInstance()
+    val data by viewModel.data.observeAsState("처음화면")
+
+    TopAppBar(
+        title = {
+            when (data) {
+                "처음화면" -> {
+                    Text("처음화면")
+                }
+                "직원안내" -> {
+                    Text("직원안내")
+                }
+                "청사안내" -> {
+                    Text("청사안내")
+                }
+                "포토갤러리" -> {
+                    Text("포토갤러리")
+                }
+                "홍보컨텐츠" -> {
+                    Text("홍보컨텐츠")
+                }
+                "공지사항" -> {
+                    Text("공지사항")
+                }
+                "관광안내" -> {
+                    Text("관광안내")
+                }
+            }
+        },
+        navigationIcon = {
+            IconButton(
+                onClick = {
+                    onNavigate(HomeScreen.Home.name)
+                }
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Home,
+                    contentDescription = "시작 아이콘"
+                )
+            }
+        },
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            titleContentColor = MaterialTheme.colorScheme.primary,
+        ),
+    )
+}
+
 @Composable
 fun BottomNavigationBar(onNavigate: (String) -> Unit) {
     NavigationBar {
@@ -120,7 +188,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             },
             selected = false,
             onClick = {
-                onNavigate(FirstScreen.First.name)
+                onNavigate(HomeScreen.Home.name)
             }
         )
 
@@ -137,7 +205,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             },
             selected = false,
             onClick = {
-                onNavigate(FirstScreen.First.name)
+                onNavigate(HomeScreen.Home.name)
             }
         )
 
