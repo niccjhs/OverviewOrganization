@@ -27,24 +27,31 @@ fun HomeList() {
     ) {
         Column(
             modifier = Modifier.padding(0.dp),
-            verticalArrangement = Arrangement.spacedBy(0.dp)
+            verticalArrangement = Arrangement.spacedBy(20.dp)
             //text 안에 있는 text들 구분
         ) {
-            Text(
-                text = "한눈에",
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold,
-            )
-            Text(
-                text = "새로운 세상을",
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold,
-            )
-            Text(
-                text = "만나다.",
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold,
-            )
+            Column(
+                modifier = Modifier.padding(0.dp),
+                verticalArrangement = Arrangement.spacedBy(0.dp)
+                //text에 한글 글자 폰트 구분
+            ){
+                Text(
+                    text = "한눈에",
+                    fontSize = 40.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text = "새로운 세상을",
+                    fontSize = 40.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text = "만나다.",
+                    fontSize = 40.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+
             Row(
                 modifier = Modifier.padding(0.dp),
                 horizontalArrangement = Arrangement.spacedBy(0.dp)
