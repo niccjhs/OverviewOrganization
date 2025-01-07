@@ -7,33 +7,35 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.overvieworganization.screen.FirstList
+import com.example.overvieworganization.screen.FirstScreen
+import com.example.overvieworganization.screen.GroupList
+import com.example.overvieworganization.screen.GroupScreen
+import com.example.overvieworganization.screen.ImageList
+import com.example.overvieworganization.screen.ImageScreen
+import com.example.overvieworganization.screen.InfoList
+import com.example.overvieworganization.screen.InfoScreen
+import com.example.overvieworganization.screen.IntroduceList
+import com.example.overvieworganization.screen.IntroduceScreen
+import com.example.overvieworganization.screen.LocateList
+import com.example.overvieworganization.screen.LocateScreen
 import com.example.overvieworganization.ui.theme.OverviewOrganizationTheme
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,23 +78,23 @@ fun MainScreen(){
                 FirstList()
             }
 
-            composable(route = FirstScreen.Group.name) {
+            composable(route = GroupScreen.Group.name) {
                 GroupList()
             }
 
-            composable(route = FirstScreen.Location.name) {
-                LocationList()
+            composable(route = LocateScreen.Locate.name) {
+                LocateList()
             }
 
-            composable(route = FirstScreen.Image.name) {
+            composable(route = ImageScreen.Image.name) {
                 ImageList()
             }
 
-            composable(route = FirstScreen.Information.name) {
-                InformationList()
+            composable(route = InfoScreen.Info.name) {
+                InfoList()
             }
 
-            composable(route = FirstScreen.Introduce.name) {
+            composable(route = IntroduceScreen.Introduce.name) {
                 IntroduceList()
             }
         }
@@ -146,7 +148,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             },
             selected = false,
             onClick = {
-                onNavigate(FirstScreen.Group.name)
+                onNavigate(GroupScreen.Group.name)
             }
         )
 
@@ -163,7 +165,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             },
             selected = false,
             onClick = {
-                onNavigate(FirstScreen.Location.name)
+                onNavigate(LocateScreen.Locate.name)
             }
         )
 
@@ -180,7 +182,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             },
             selected = false,
             onClick = {
-                onNavigate(FirstScreen.Image.name)
+                onNavigate(ImageScreen.Image.name)
             }
         )
 
@@ -197,7 +199,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             },
             selected = false,
             onClick = {
-                onNavigate(FirstScreen.Information.name)
+                onNavigate(InfoScreen.Info.name)
             }
         )
 
@@ -214,7 +216,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             },
             selected = false,
             onClick = {
-                onNavigate(FirstScreen.Introduce.name)
+                onNavigate(IntroduceScreen.Introduce.name)
             }
         )
     }

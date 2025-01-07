@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OverviewOrganization"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -23,6 +24,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<!--        <activity-->
+<!--            android:name=".RegisterActivity"-->
+<!--            android:exported="false"-->
+<!--            android:parentActivityName=".LoginActivity" />-->
+
+<!--        <activity-->
+<!--            android:name=".InfoListActivity"-->
+<!--            android:parentActivityName=".ChatBotActivity">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.PARENT_ACTIVITY"-->
+<!--                android:value=".ChatBotActivity" />-->
+<!--        </activity>-->
+
     </application>
 
 </manifest>
