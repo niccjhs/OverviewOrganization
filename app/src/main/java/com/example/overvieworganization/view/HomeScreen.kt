@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
 import com.example.overvieworganization.viewModel.AppViewModel
 
 enum class HomeScreen {
@@ -20,8 +19,6 @@ enum class HomeScreen {
 
 @Composable
 fun HomeList(onNavigate: (String) -> Unit) {
-    val navController = rememberNavController()
-
     val viewModel: AppViewModel = AppViewModel.getInstance()
     viewModel.setData("처음화면")
 
