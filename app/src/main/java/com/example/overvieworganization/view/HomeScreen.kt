@@ -27,29 +27,40 @@ fun HomeList() {
     ) {
         Column(
             modifier = Modifier.padding(0.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(0.dp)
             //text 안에 있는 text들 구분
         ) {
             Text(
                 text = "한눈에",
-                fontSize = 30.sp,
+                fontSize = 40.sp,
                 fontWeight = FontWeight.Bold,
             )
             Text(
                 text = "새로운 세상을",
-                fontSize = 30.sp,
+                fontSize = 40.sp,
                 fontWeight = FontWeight.Bold,
             )
             Text(
-                text = "만나다",
-                fontSize = 30.sp,
+                text = "만나다.",
+                fontSize = 40.sp,
                 fontWeight = FontWeight.Bold,
             )
-            Text(
-                text = "Meet a new World at a glance",
-                fontSize = 30.sp,
-                fontWeight = FontWeight.Normal,
-            )
+            Row(
+                modifier = Modifier.padding(0.dp),
+                horizontalArrangement = Arrangement.spacedBy(0.dp)
+                //text에 영어 글자 폰트 구분
+            ){
+                Text(
+                    text = "Meet a new World ",
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Normal,
+                )
+                Text(
+                    text = "at a glance.",
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
         }
 
         Row(
