@@ -13,12 +13,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-enum class IntroduceScreen {
-    Introduce
+enum class EmployeeScreen {
+    Employee
 }
 
 @Composable
-fun IntroduceList() {
+fun EmployeeList() {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -27,7 +27,7 @@ fun IntroduceList() {
     ) {
         item {
             Text(
-                text = "부서소개 화면",
+                text = "직원안내 화면",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier

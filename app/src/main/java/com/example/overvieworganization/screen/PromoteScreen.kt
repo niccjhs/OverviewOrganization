@@ -13,12 +13,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-enum class GroupScreen {
-    Group
+enum class PromoteScreen {
+    Promote
 }
 
 @Composable
-fun GroupList() {
+fun PromoteList() {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -27,7 +27,7 @@ fun GroupList() {
     ) {
         item {
             Text(
-                text = "부서조직도 화면",
+                text = "홍보컨텐츠 화면",
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier

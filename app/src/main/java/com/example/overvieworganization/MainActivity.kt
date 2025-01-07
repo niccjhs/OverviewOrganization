@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -23,18 +24,20 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.overvieworganization.screen.EmployeeList
+import com.example.overvieworganization.screen.EmployeeScreen
 import com.example.overvieworganization.screen.FirstList
 import com.example.overvieworganization.screen.FirstScreen
-import com.example.overvieworganization.screen.GroupList
-import com.example.overvieworganization.screen.GroupScreen
 import com.example.overvieworganization.screen.ImageList
 import com.example.overvieworganization.screen.ImageScreen
 import com.example.overvieworganization.screen.InfoList
 import com.example.overvieworganization.screen.InfoScreen
-import com.example.overvieworganization.screen.IntroduceList
-import com.example.overvieworganization.screen.IntroduceScreen
 import com.example.overvieworganization.screen.LocateList
 import com.example.overvieworganization.screen.LocateScreen
+import com.example.overvieworganization.screen.PromoteList
+import com.example.overvieworganization.screen.PromoteScreen
+import com.example.overvieworganization.screen.TourList
+import com.example.overvieworganization.screen.TourScreen
 import com.example.overvieworganization.ui.theme.OverviewOrganizationTheme
 
 class MainActivity : ComponentActivity() {
@@ -78,8 +81,8 @@ fun MainScreen(){
                 FirstList()
             }
 
-            composable(route = GroupScreen.Group.name) {
-                GroupList()
+            composable(route = EmployeeScreen.Employee.name) {
+                EmployeeList()
             }
 
             composable(route = LocateScreen.Locate.name) {
@@ -90,12 +93,16 @@ fun MainScreen(){
                 ImageList()
             }
 
+            composable(route = PromoteScreen.Promote.name) {
+                PromoteList()
+            }
+
             composable(route = InfoScreen.Info.name) {
                 InfoList()
             }
 
-            composable(route = IntroduceScreen.Introduce.name) {
-                IntroduceList()
+            composable(route = TourScreen.Tour.name) {
+                TourList()
             }
         }
     }
@@ -106,7 +113,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
     NavigationBar {
         NavigationBarItem(
             label = {
-                Text("어서오세요. 방문을 환영합니다.")
+                Text("방문을 환영합니다.")
             },
 
             icon = {
@@ -136,19 +143,19 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
 
         NavigationBarItem(
             label = {
-                Text("부서조직도")
+                Text("직원안내")
             },
 
             icon = {
                 Icon(
 
                     Icons.Filled.DateRange,
-                    contentDescription = "부서조직도 리스트 아이콘"
+                    contentDescription = "직원안내 리스트 아이콘"
                 )
             },
             selected = false,
             onClick = {
-                onNavigate(GroupScreen.Group.name)
+                onNavigate(EmployeeScreen.Employee.name)
             }
         )
 
@@ -188,6 +195,23 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
 
         NavigationBarItem(
             label = {
+                Text("홍보컨텐츠")
+            },
+
+            icon = {
+                Icon(
+                    Icons.Filled.PlayArrow,
+                    contentDescription = "홍보컨텐츠 리스트 아이콘"
+                )
+            },
+            selected = false,
+            onClick = {
+                onNavigate(PromoteScreen.Promote.name)
+            }
+        )
+
+        NavigationBarItem(
+            label = {
                 Text("공지사항")
             },
 
@@ -205,18 +229,18 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
 
         NavigationBarItem(
             label = {
-                Text("부서소개")
+                Text("관광안내")
             },
 
             icon = {
                 Icon(
                     Icons.Filled.Person,
-                    contentDescription = "부서소개 리스트 아이콘"
+                    contentDescription = "관광안내 리스트 아이콘"
                 )
             },
             selected = false,
             onClick = {
-                onNavigate(IntroduceScreen.Introduce.name)
+                onNavigate(TourScreen.Tour.name)
             }
         )
     }
