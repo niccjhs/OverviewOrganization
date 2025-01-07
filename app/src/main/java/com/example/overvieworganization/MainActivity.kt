@@ -95,7 +95,12 @@ fun MainScreen() {
             modifier = Modifier.padding(innerPadding),
         ) {
             composable(route = HomeScreen.Home.name) {
-                HomeList()
+                HomeList{  navController.navigate(it) {
+                    launchSingleTop = true
+                    popUpTo(it) {
+                        inclusive = true
+                    }
+                }}
             }
 
             composable(route = EmployeeScreen.Employee.name) {
