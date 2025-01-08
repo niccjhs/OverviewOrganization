@@ -234,36 +234,41 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
         containerColor = MaterialTheme.colorScheme.primary,
     ) {
         NavigationBarItem(
-            modifier = Modifier.offset(x = 30.dp),
+            modifier = Modifier.offset(x = 50.dp),
             label = { Text("방문을 환영합니다.", fontSize = 25.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary) },
             icon = {},
             selected = false,
             onClick = { onNavigate(HomeScreen.Home.name) }
         )
         NavigationBarItem(
+            modifier = Modifier.offset(x = 250.dp),
             label = { BottomTextView("처음으로") },
             icon = { BottomIconView("처음으로", Icons.Filled.Home) },
             selected = false,
             onClick = { onNavigate(HomeScreen.Home.name) }
         )
         NavigationBarItem(
+            modifier = Modifier.offset(x = 200.dp),
             label = { BottomTextView("직원안내") },
             icon = { BottomIconView("직원안내", Icons.Filled.DateRange) },
             selected = false,
             onClick = { onNavigate(EmployeeScreen.Employee.name) }
         )
         NavigationBarItem(label = { BottomTextView("청사안내") },
+            modifier = Modifier.offset(x = 150.dp),
             icon = { BottomIconView("청사안내", Icons.Filled.LocationOn) },
             selected = false,
             onClick = { onNavigate(LocateScreen.Locate.name) }
         )
         NavigationBarItem(
+            modifier = Modifier.offset(x = 100.dp),
             label = { BottomTextView("포토갤러리") },
             icon = { BottomIconView("포토갤러리", Icons.Filled.Favorite) },
             selected = false,
             onClick = { onNavigate(ImageScreen.Image.name) }
         )
         NavigationBarItem(
+            modifier = Modifier.offset(x = 50.dp),
             label = { BottomTextView("홍보컨텐츠") },
             icon = { BottomIconView("홍보컨텐츠", Icons.Filled.PlayArrow) },
             selected = false,
@@ -276,6 +281,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             onClick = { onNavigate(InfoScreen.Info.name) }
         )
         NavigationBarItem(
+            modifier = Modifier.offset(x = (-50).dp),
             label = { BottomTextView("관광안내") },
             icon = { BottomIconView("관광안내", Icons.Filled.Person) },
             selected = false,
