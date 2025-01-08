@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -148,40 +149,154 @@ fun TopBar(onNavigate: (String) -> Unit) {
         title = {
             when (data) {
                 "처음화면" -> {
-                    Text("처음화면", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Row(
+                        modifier = Modifier.padding(0.dp),
+                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                    ){
+                        Text("처음화면", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+                        IconButton(
+                            onClick = {
+                                onNavigate(HomeScreen.Home.name)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Home,
+                                contentDescription = "시작 아이콘",
+                                tint = MaterialTheme.colorScheme.secondary,
+                            )
+                        }
+                    }
                 }
                 "직원안내" -> {
-                    Text("직원안내", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Row(
+                        modifier = Modifier.padding(0.dp),
+                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                    ){
+                        Text("직원안내", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+                        IconButton(
+                            onClick = {
+                                onNavigate(HomeScreen.Home.name)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Home,
+                                contentDescription = "시작 아이콘",
+                                tint = MaterialTheme.colorScheme.secondary,
+                            )
+                        }
+                    }
                 }
                 "청사안내" -> {
-                    Text("청사안내", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Row(
+                        modifier = Modifier.padding(0.dp),
+                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                    ){
+                        Text("청사안내", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+                        IconButton(
+                            onClick = {
+                                onNavigate(HomeScreen.Home.name)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Home,
+                                contentDescription = "시작 아이콘",
+                                tint = MaterialTheme.colorScheme.secondary,
+                            )
+                        }
+                    }
                 }
                 "포토갤러리" -> {
-                    Text("포토갤러리", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Row(
+                        modifier = Modifier.padding(0.dp),
+                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                    ){
+                        Text("포토갤러리", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+                        IconButton(
+                            onClick = {
+                                onNavigate(HomeScreen.Home.name)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Home,
+                                contentDescription = "시작 아이콘",
+                                tint = MaterialTheme.colorScheme.secondary,
+                            )
+                        }
+                    }
                 }
                 "홍보컨텐츠" -> {
-                    Text("홍보컨텐츠", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Row(
+                        modifier = Modifier.padding(0.dp),
+                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                    ){
+                        Text("홍보컨텐츠", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                        IconButton(
+                            onClick = {
+                                onNavigate(HomeScreen.Home.name)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Home,
+                                contentDescription = "시작 아이콘",
+                                tint = MaterialTheme.colorScheme.secondary,
+                            )
+                        }
+                    }
                 }
                 "공지사항" -> {
-                    Text("공지사항", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Row(
+                        modifier = Modifier.padding(0.dp),
+                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                    ){
+                        Text("공지사항", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                        IconButton(
+                            onClick = {
+                                onNavigate(HomeScreen.Home.name)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Home,
+                                contentDescription = "시작 아이콘",
+                                tint = MaterialTheme.colorScheme.secondary,
+                            )
+                        }
+                    }
                 }
                 "관광안내" -> {
-                    Text("관광안내", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                    Row(
+                        modifier = Modifier.padding(0.dp),
+                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                    ){
+                        Text("관광안내", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                        IconButton(
+                            onClick = {
+                                onNavigate(HomeScreen.Home.name)
+                            }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Home,
+                                contentDescription = "시작 아이콘",
+                                tint = MaterialTheme.colorScheme.secondary,
+                            )
+                        }
+                    }
                 }
             }
         },
         navigationIcon = {
             IconButton(
                 onClick = {
-                    onNavigate(HomeScreen.Home.name)
                 }
             ) {
                 Icon(
-                    imageVector = Icons.Default.Home,
+                    imageVector = Icons.Default.Star,
                     contentDescription = "시작 아이콘",
                     tint = MaterialTheme.colorScheme.secondary,
                 )
             }
+        },
+        actions = {
+            Text("2025.01.07.(화) 9:54 오전", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
