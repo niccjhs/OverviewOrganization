@@ -6,8 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
@@ -32,6 +38,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -150,10 +157,13 @@ fun TopBar(onNavigate: (String) -> Unit) {
             when (data) {
                 "처음화면" -> {
                     Row(
-                        modifier = Modifier.padding(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .offset(x = 15.dp),//텍스트와 아이콘 모두 오른쪽으로 이동
+                        horizontalArrangement = Arrangement.spacedBy(20.dp)// 아이콘만 오른쪽으로 이동
                     ){
                         Text("처음화면", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+
                         IconButton(
                             onClick = {
                                 onNavigate(HomeScreen.Home.name)
@@ -163,16 +173,20 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
                             )
                         }
                     }
                 }
                 "직원안내" -> {
                     Row(
-                        modifier = Modifier.padding(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .offset(x = 15.dp),
+                        horizontalArrangement = Arrangement.spacedBy(20.dp)
                     ){
                         Text("직원안내", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+
                         IconButton(
                             onClick = {
                                 onNavigate(HomeScreen.Home.name)
@@ -182,16 +196,20 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
                             )
                         }
                     }
                 }
                 "청사안내" -> {
                     Row(
-                        modifier = Modifier.padding(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .offset(x = 15.dp),
+                        horizontalArrangement = Arrangement.spacedBy(20.dp)
                     ){
                         Text("청사안내", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+
                         IconButton(
                             onClick = {
                                 onNavigate(HomeScreen.Home.name)
@@ -201,16 +219,20 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
                             )
                         }
                     }
                 }
                 "포토갤러리" -> {
                     Row(
-                        modifier = Modifier.padding(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .offset(x = 15.dp),
+                        horizontalArrangement = Arrangement.spacedBy(20.dp)
                     ){
                         Text("포토갤러리", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+
                         IconButton(
                             onClick = {
                                 onNavigate(HomeScreen.Home.name)
@@ -220,16 +242,20 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
                             )
                         }
                     }
                 }
                 "홍보컨텐츠" -> {
                     Row(
-                        modifier = Modifier.padding(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .offset(x = 15.dp),
+                        horizontalArrangement = Arrangement.spacedBy(20.dp)
                     ){
-                        Text("홍보컨텐츠", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                        Text("홍보컨텐츠", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+
                         IconButton(
                             onClick = {
                                 onNavigate(HomeScreen.Home.name)
@@ -239,16 +265,20 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
                             )
                         }
                     }
                 }
                 "공지사항" -> {
                     Row(
-                        modifier = Modifier.padding(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .offset(x = 15.dp),
+                        horizontalArrangement = Arrangement.spacedBy(20.dp)
                     ){
-                        Text("공지사항", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                        Text("공지사항", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+
                         IconButton(
                             onClick = {
                                 onNavigate(HomeScreen.Home.name)
@@ -258,16 +288,20 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
                             )
                         }
                     }
                 }
                 "관광안내" -> {
                     Row(
-                        modifier = Modifier.padding(0.dp),
-                        horizontalArrangement = Arrangement.spacedBy(5.dp)
+                        modifier = Modifier
+                            .padding(0.dp)
+                            .offset(x = 15.dp),
+                        horizontalArrangement = Arrangement.spacedBy(20.dp)
                     ){
-                        Text("관광안내", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                        Text("관광안내", fontSize = 40.sp, fontWeight = FontWeight.Bold)
+
                         IconButton(
                             onClick = {
                                 onNavigate(HomeScreen.Home.name)
@@ -277,6 +311,7 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
+                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
                             )
                         }
                     }
@@ -292,6 +327,7 @@ fun TopBar(onNavigate: (String) -> Unit) {
                     imageVector = Icons.Default.Star,
                     contentDescription = "시작 아이콘",
                     tint = MaterialTheme.colorScheme.secondary,
+                    modifier = Modifier.size(40.dp)
                 )
             }
         },
