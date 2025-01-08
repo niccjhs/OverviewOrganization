@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -18,6 +20,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -28,6 +31,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -140,25 +148,25 @@ fun TopBar(onNavigate: (String) -> Unit) {
         title = {
             when (data) {
                 "처음화면" -> {
-                    Text("처음화면")
+                    Text("처음화면", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                 }
                 "직원안내" -> {
-                    Text("직원안내")
+                    Text("직원안내", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                 }
                 "청사안내" -> {
-                    Text("청사안내")
+                    Text("청사안내", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                 }
                 "포토갤러리" -> {
-                    Text("포토갤러리")
+                    Text("포토갤러리", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                 }
                 "홍보컨텐츠" -> {
-                    Text("홍보컨텐츠")
+                    Text("홍보컨텐츠", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                 }
                 "공지사항" -> {
-                    Text("공지사항")
+                    Text("공지사항", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                 }
                 "관광안내" -> {
-                    Text("관광안내")
+                    Text("관광안내", fontSize = 30.sp, fontWeight = FontWeight.Bold)
                 }
             }
         },
@@ -170,13 +178,14 @@ fun TopBar(onNavigate: (String) -> Unit) {
             ) {
                 Icon(
                     imageVector = Icons.Default.Home,
-                    contentDescription = "시작 아이콘"
+                    contentDescription = "시작 아이콘",
+                    tint = MaterialTheme.colorScheme.secondary,
                 )
             }
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            titleContentColor = MaterialTheme.colorScheme.primary,
+            containerColor = MaterialTheme.colorScheme.primary,
+            titleContentColor = MaterialTheme.colorScheme.secondary,
         ),
     )
 }
