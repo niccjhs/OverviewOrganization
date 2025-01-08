@@ -1,19 +1,16 @@
 package com.example.overvieworganization
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
@@ -27,7 +24,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -38,9 +34,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalOf
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,6 +56,8 @@ import com.example.overvieworganization.view.PromoteScreen
 import com.example.overvieworganization.view.TourList
 import com.example.overvieworganization.view.TourScreen
 import com.example.overvieworganization.viewModel.AppViewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -146,11 +141,13 @@ fun MainScreen() {
     }
 }
 
+@SuppressLint("SimpleDateFormat")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(onNavigate: (String) -> Unit) {
     val viewModel: AppViewModel = AppViewModel.getInstance()
     val data by viewModel.data.observeAsState("처음화면")
+
 
     TopAppBar(
         title = {
@@ -173,7 +170,9 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
-                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .offset(y = 5.dp)
                             )
                         }
                     }
@@ -196,7 +195,9 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
-                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .offset(y = 5.dp)
                             )
                         }
                     }
@@ -219,7 +220,9 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
-                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .offset(y = 5.dp)
                             )
                         }
                     }
@@ -242,7 +245,9 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
-                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .offset(y = 5.dp)
                             )
                         }
                     }
@@ -265,7 +270,9 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
-                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .offset(y = 5.dp)
                             )
                         }
                     }
@@ -288,7 +295,9 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
-                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .offset(y = 5.dp)
                             )
                         }
                     }
@@ -311,7 +320,9 @@ fun TopBar(onNavigate: (String) -> Unit) {
                                 imageVector = Icons.Default.Home,
                                 contentDescription = "시작 아이콘",
                                 tint = MaterialTheme.colorScheme.secondary,
-                                modifier = Modifier.size(50.dp).offset(y = 5.dp)
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .offset(y = 5.dp)
                             )
                         }
                     }
@@ -332,7 +343,12 @@ fun TopBar(onNavigate: (String) -> Unit) {
             }
         },
         actions = {
-            Text("2025.01.07.(화) 9:54 오전", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
+            val calendar: Calendar = Calendar.getInstance()
+            val sdf = SimpleDateFormat("yyyy.MM.dd.(E) HH:mm a")
+
+            val result = sdf.format(calendar.time)
+
+            Text(result, fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
