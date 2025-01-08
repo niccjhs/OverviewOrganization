@@ -1,13 +1,16 @@
 package com.example.overvieworganization.view
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,10 +24,9 @@ enum class HomeScreen {
 fun HomeList(onNavigate: (String) -> Unit) {
     val viewModel: AppViewModel = AppViewModel.getInstance()
     viewModel.setData("처음화면")
-
     Row(
-        modifier = Modifier.padding(250.dp),
-        horizontalArrangement = Arrangement.spacedBy(400.dp)
+        modifier = Modifier.padding(250.dp).background(color = MaterialTheme.colorScheme.background).background(color = Color.DarkGray),
+        horizontalArrangement = Arrangement.spacedBy(400.dp),
         //text와 카드로 구분
     ) {
         Column(
@@ -53,7 +55,6 @@ fun HomeList(onNavigate: (String) -> Unit) {
                     fontWeight = FontWeight.Bold,
                 )
             }
-
             Row(
                 modifier = Modifier.padding(0.dp),
                 horizontalArrangement = Arrangement.spacedBy(0.dp)
@@ -71,7 +72,6 @@ fun HomeList(onNavigate: (String) -> Unit) {
                 )
             }
         }
-
         Row(
             modifier = Modifier.padding(0.dp),
             horizontalArrangement = Arrangement.spacedBy(100.dp)
@@ -115,7 +115,6 @@ fun HomeList(onNavigate: (String) -> Unit) {
                         }
                     }
                 }
-
                 TextButton(
                     onClick = {
                         onNavigate(EmployeeScreen.Employee.name)
@@ -150,7 +149,6 @@ fun HomeList(onNavigate: (String) -> Unit) {
                     }
                 }
             }
-
             Column(
                 modifier = Modifier.padding(0.dp),
                 verticalArrangement = Arrangement.spacedBy(30.dp)
@@ -179,7 +177,6 @@ fun HomeList(onNavigate: (String) -> Unit) {
 
                     }
                 }
-
                 TextButton(
                     onClick = {
                         onNavigate(LocateScreen.Locate.name)
@@ -202,7 +199,6 @@ fun HomeList(onNavigate: (String) -> Unit) {
                         )
                     }
                 }
-
                 TextButton(
                     onClick = {
                         onNavigate(InfoScreen.Info.name)
