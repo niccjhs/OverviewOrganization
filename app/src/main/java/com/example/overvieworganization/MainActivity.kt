@@ -8,14 +8,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
@@ -40,7 +38,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.pointer.motionEventSpy
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -97,12 +94,10 @@ fun MainScreen() {
         NavHost(navController = navController, startDestination = HomeScreen.Home.name, modifier = Modifier.padding(innerPadding),
         ) {
             composable(route = HomeScreen.Home.name) {
-                HomeList() {
-                    navController.navigate(it) {}
-                }
+                HomeList() { navController.navigate(it) {} }
             }
             composable(route = EmployeeScreen.Employee.name) {
-                EmployeeList()
+                EmployeeList() { navController.navigate(it) {} }
             }
             composable(route = LocateScreen.Locate.name) {
                 LocateList()
