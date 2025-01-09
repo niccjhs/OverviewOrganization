@@ -62,46 +62,8 @@ fun HomeList(onNavigate: (String) -> Unit) {
                 verticalArrangement = Arrangement.spacedBy(20.dp)
                 //카드1에 있는 2가지 버튼을 구분
             ){
-                TextButton(
-                    modifier = Modifier.size(width = 400.dp, height = 220.dp).offset(y = 50.dp).background(MaterialTheme.colorScheme.tertiary),
-                    onClick = {
-                        onNavigate(TourScreen.Tour.name)
-                    }
-                ){
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
-                        //카드1에 관광안내 버튼에서 제목과 소제목 구분
-                    ){
-                        Text(text = "관광 안내", fontSize = 30.sp, fontWeight = FontWeight.ExtraBold)
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(0.dp)
-                            //카드1에 관광안내 버튼에서 소제목을 구분
-                        ){
-                            Text(text = "민원실 좌석 배치도 및 직원 정보를", fontSize = 15.sp, fontWeight = FontWeight.Normal)
-                            Text(text = "한눈에 알아볼 수 있도록 소개합니다.", fontSize = 15.sp, fontWeight = FontWeight.Normal)
-                        }
-                    }
-                }
-                TextButton(
-                    modifier = Modifier.size(width = 400.dp, height = 220.dp).offset(y = 50.dp).background(MaterialTheme.colorScheme.secondary),
-                    onClick = {
-                        onNavigate(EmployeeScreen.Employee.name)
-                    }
-                ){
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
-                        //카드1에 직원안내 버튼에서 제목과 소제목 구분
-                    ) {
-                        Text(text = "직원 안내", fontSize = 30.sp, fontWeight = FontWeight.ExtraBold, color = Color.White)
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(0.dp)
-                            //카드1에 직원안내 버튼에서 소제목을 구분
-                        ){
-                            Text(text = "좌석배치도 및 담당자의 주요 업무를", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                            Text(text = "소개합니다.", fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                        }
-                    }
-                }
+                SecondTextButton(onNavigate, TourScreen.Tour.name, MaterialTheme.colorScheme.tertiary, "관광 안내", "민원실 좌석 배치도 및 직원 정보를", "한눈에 알아볼 수 있도록 소개합니다.", MaterialTheme.colorScheme.primary )
+                SecondTextButton(onNavigate, EmployeeScreen.Employee.name, MaterialTheme.colorScheme.secondary, "직원 안내", "좌석배치도 및 담당자의 주요 업무를", "소개합니다.", MaterialTheme.colorScheme.tertiary )
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(20.dp)
@@ -162,4 +124,38 @@ fun FirstKorTextView(text: String) {
 @Composable
 fun FirstEngTextView(text: String, bold: FontWeight) {
     Text(text = text, fontSize = 30.sp, fontWeight = bold, color = MaterialTheme.colorScheme.tertiary)
+}
+
+@Composable
+fun SecondTitleTextView(text: String, color: Color) {
+    Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.ExtraBold, color = color)
+}
+
+@Composable
+fun SecondBodyTextView(text: String, color: Color) {
+    Text(text = text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = color)
+}
+
+@Composable
+fun SecondTextButton(onNavigate: (String) -> Unit, route: String, color: Color, titleText: String, bodyFirstText: String, bodySecondText: String,textColor: Color){
+    TextButton(
+        modifier = Modifier.size(width = 400.dp, height = 220.dp).offset(y = 50.dp).background(color),
+        onClick = {
+            onNavigate(route)
+        }
+    ){
+        Column(
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+            //카드1에 관광안내 버튼에서 제목과 소제목 구분
+        ){
+            SecondTitleTextView(titleText, textColor)
+            Column(
+                verticalArrangement = Arrangement.spacedBy(0.dp)
+                //카드1에 관광안내 버튼에서 소제목을 구분
+            ){
+                SecondBodyTextView(bodyFirstText, textColor)
+                SecondBodyTextView(bodySecondText, textColor)
+            }
+        }
+    }
 }
