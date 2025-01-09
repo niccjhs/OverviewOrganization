@@ -14,6 +14,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -21,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -62,8 +68,8 @@ fun HomeList(onNavigate: (String) -> Unit) {
                 verticalArrangement = Arrangement.spacedBy(20.dp)
                 //카드1에 있는 2가지 버튼을 구분
             ){
-                SecondTextButton(onNavigate, TourScreen.Tour.name, MaterialTheme.colorScheme.tertiary, "관광 안내", "민원실 좌석 배치도 및 직원 정보를", "한눈에 알아볼 수 있도록 소개합니다.", MaterialTheme.colorScheme.primary )
-                SecondTextButton(onNavigate, EmployeeScreen.Employee.name, MaterialTheme.colorScheme.secondary, "직원 안내", "좌석배치도 및 담당자의 주요 업무를", "소개합니다.", MaterialTheme.colorScheme.tertiary )
+                SecondTextButton(onNavigate, TourScreen.Tour.name, MaterialTheme.colorScheme.tertiary, "관광 안내", "민원실 좌석 배치도 및 직원 정보를", "한눈에 알아볼 수 있도록 소개합니다.", MaterialTheme.colorScheme.primary, Icons.Filled.Person, MaterialTheme.colorScheme.secondary)
+                SecondTextButton(onNavigate, EmployeeScreen.Employee.name, MaterialTheme.colorScheme.secondary, "직원 안내", "좌석배치도 및 담당자의 주요 업무를", "소개합니다.", MaterialTheme.colorScheme.tertiary, Icons.Filled.DateRange, MaterialTheme.colorScheme.tertiary)
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(20.dp)
@@ -137,7 +143,7 @@ fun SecondBodyTextView(text: String, color: Color) {
 }
 
 @Composable
-fun SecondTextButton(onNavigate: (String) -> Unit, route: String, color: Color, titleText: String, bodyFirstText: String, bodySecondText: String,textColor: Color){
+fun SecondTextButton(onNavigate: (String) -> Unit, route: String, color: Color, titleText: String, bodyFirstText: String, bodySecondText: String,textColor: Color, icon: ImageVector, iconColor: Color){
     TextButton(
         modifier = Modifier.size(width = 400.dp, height = 220.dp).offset(y = 50.dp).background(color),
         onClick = {
@@ -145,6 +151,7 @@ fun SecondTextButton(onNavigate: (String) -> Unit, route: String, color: Color, 
         }
     ){
         Column(
+            modifier = Modifier.offset(x = (-30).dp, y = (-30).dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
             //카드1에 관광안내 버튼에서 제목과 소제목 구분
         ){
@@ -157,5 +164,11 @@ fun SecondTextButton(onNavigate: (String) -> Unit, route: String, color: Color, 
                 SecondBodyTextView(bodySecondText, textColor)
             }
         }
+        Icon(
+            imageVector = icon,
+            contentDescription = "아이콘",
+            tint = iconColor,
+            modifier = Modifier.size(60.dp).offset(x = 30.dp, y = 50.dp)
+        )
     }
 }
