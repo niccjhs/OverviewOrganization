@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -192,20 +193,26 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
     val data by viewModel.data.observeAsState()
 
     NavigationBar(
-        modifier = Modifier.fillMaxWidth().fillMaxHeight(0.09F),
+        modifier = Modifier.fillMaxHeight(0.09F),
         containerColor = MaterialTheme.colorScheme.primary,
+
     ) {
         NavigationBarItem(
-            modifier = Modifier.offset(x = 50.dp),
-            label = { Text("방문을 환영합니다.", fontSize = 25.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary) },
+            label = { Text("방문을 환영합니다.", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary) },
             icon = {},
             selected = false,
             onClick = { onNavigate(HomeScreen.Home.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = 250.dp).background(
+            label = { },
+            icon = { },
+            selected = false,
+            onClick = { }
+        )
+        NavigationBarItem(
+            modifier = Modifier.background(
                 if(data == "처음화면"){
-                    MaterialTheme.colorScheme.onSurface
+                    MaterialTheme.colorScheme.secondary
                 }
                 else {
                     MaterialTheme.colorScheme.primary
@@ -217,9 +224,9 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             onClick = { onNavigate(HomeScreen.Home.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = 200.dp).background(
+            modifier = Modifier.background(
                 if(data == "직원안내"){
-                    MaterialTheme.colorScheme.onSurface
+                    MaterialTheme.colorScheme.secondary
                 }
                 else {
                     MaterialTheme.colorScheme.primary
@@ -231,9 +238,9 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             onClick = { onNavigate(EmployeeScreen.Employee.name) }
         )
         NavigationBarItem(label = { BottomTextView("청사안내") },
-            modifier = Modifier.offset(x = 150.dp).background(
+            modifier = Modifier.background(
                 if(data == "청사안내"){
-                    MaterialTheme.colorScheme.onSurface
+                    MaterialTheme.colorScheme.secondary
                 }
                 else {
                     MaterialTheme.colorScheme.primary
@@ -244,9 +251,9 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             onClick = { onNavigate(LocateScreen.Locate.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = 100.dp).background(
+            modifier = Modifier.background(
                 if(data == "포토갤러리"){
-                    MaterialTheme.colorScheme.onSurface
+                    MaterialTheme.colorScheme.secondary
                 }
                 else {
                     MaterialTheme.colorScheme.primary
@@ -258,9 +265,9 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             onClick = { onNavigate(ImageScreen.Image.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = 50.dp).background(
+            modifier = Modifier.background(
                 if(data == "홍보컨텐츠"){
-                    MaterialTheme.colorScheme.onSurface
+                    MaterialTheme.colorScheme.secondary
                 }
                 else {
                     MaterialTheme.colorScheme.primary
@@ -274,7 +281,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
         NavigationBarItem(
             modifier = Modifier.background(
                 if(data == "공지사항"){
-                    MaterialTheme.colorScheme.onSurface
+                    MaterialTheme.colorScheme.secondary
                 }
                 else {
                     MaterialTheme.colorScheme.primary
@@ -286,9 +293,9 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             onClick = { onNavigate(InfoScreen.Info.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = (-50).dp).background(
+            modifier = Modifier.background(
                 if(data == "관광안내"){
-                    MaterialTheme.colorScheme.onSurface
+                    MaterialTheme.colorScheme.secondary
                 }
                 else {
                     MaterialTheme.colorScheme.primary
