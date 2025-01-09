@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.overvieworganization.viewModel.AppViewModel
@@ -43,14 +44,14 @@ fun HomeList(onNavigate: (String) -> Unit) {
             modifier = Modifier.size(width = 430.dp, height = 220.dp).offset(x = 50.dp, y = 50.dp)
             //text 안에 있는 text들 구분
         ) {
-            Text(text = "한눈에", fontSize = 40.sp, fontWeight = FontWeight.Bold, color = Color.White)
-            Text(text = "새로운 세상을", fontSize = 40.sp, fontWeight = FontWeight.Bold, color = Color.White)
-            Text(text = "만나다.", fontSize = 40.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            FirstKorTextView("한눈에")
+            FirstKorTextView("새로운 세상을")
+            FirstKorTextView("만나다.")
             Row(
                 //text에 영어 글자 폰트 구분
             ){
-                Text(text = "Meet a new World ", fontSize = 30.sp, fontWeight = FontWeight.Normal, color = Color.White)
-                Text(text = "at a glance.", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                FirstEngTextView("Meet a new World ", FontWeight.Normal)
+                FirstEngTextView("at a glance.", FontWeight.Bold)
             }
         }
         Row(
@@ -151,4 +152,14 @@ fun HomeList(onNavigate: (String) -> Unit) {
             }
         }
     }
+}
+
+@Composable
+fun FirstKorTextView(text: String) {
+    Text(text, fontSize = 40.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
+}
+
+@Composable
+fun FirstEngTextView(text: String, bold: FontWeight) {
+    Text(text = text, fontSize = 30.sp, fontWeight = bold, color = MaterialTheme.colorScheme.tertiary)
 }
