@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
@@ -83,38 +84,20 @@ fun MainScreen() {
         modifier = Modifier.fillMaxSize(),
         topBar = {
             TopBar {
-                navController.navigate(it) {
-                    launchSingleTop = true
-                    popUpTo(it) {
-                        inclusive = true
-                    }
-                }
+                navController.navigate(it) {}
             }
         },
         bottomBar = {
             BottomNavigationBar {
-                navController.navigate(it) {
-                    launchSingleTop = true
-                    popUpTo(it) {
-                        inclusive = true
-                    }
-                }
+                navController.navigate(it) {}
             }
         },
     ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = HomeScreen.Home.name,
-            modifier = Modifier.padding(innerPadding),
+        NavHost(navController = navController, startDestination = HomeScreen.Home.name, modifier = Modifier.padding(innerPadding),
         ) {
             composable(route = HomeScreen.Home.name) {
-                HomeList {
-                    navController.navigate(it) {
-                        launchSingleTop = true
-                        popUpTo(it) {
-                            inclusive = true
-                        }
-                    }
+                HomeList() {
+                    navController.navigate(it) {}
                 }
             }
             composable(route = EmployeeScreen.Employee.name) {
@@ -149,27 +132,13 @@ fun TopBar(onNavigate: (String) -> Unit) {
         modifier = Modifier.fillMaxWidth().fillMaxHeight(0.09F),
         title = {
             when (data) {
-                "처음화면" -> {
-                    TopTitleView("처음화면",onNavigate)
-                }
-                "직원안내" -> {
-                    TopTitleView("직원안내",onNavigate)
-                }
-                "청사안내" -> {
-                    TopTitleView("청사안내",onNavigate)
-                }
-                "포토갤러리" -> {
-                    TopTitleView("포토갤러리",onNavigate)
-                }
-                "홍보컨텐츠" -> {
-                    TopTitleView("홍보컨텐츠",onNavigate)
-                }
-                "공지사항" -> {
-                    TopTitleView("공지사항",onNavigate)
-                }
-                "관광안내" -> {
-                    TopTitleView("관광안내",onNavigate)
-                }
+                "처음화면" -> { TopTitleView("처음화면",onNavigate) }
+                "직원안내" -> { TopTitleView("직원안내",onNavigate) }
+                "청사안내" -> { TopTitleView("청사안내",onNavigate) }
+                "포토갤러리" -> { TopTitleView("포토갤러리",onNavigate) }
+                "홍보컨텐츠" -> { TopTitleView("홍보컨텐츠",onNavigate) }
+                "공지사항" -> { TopTitleView("공지사항",onNavigate) }
+                "관광안내" -> { TopTitleView("관광안내",onNavigate) }
             }
         },
         navigationIcon = {
@@ -179,12 +148,7 @@ fun TopBar(onNavigate: (String) -> Unit) {
                 IconButton(
                     onClick = {}
                 ) {
-                    Icon(
-                        imageVector = Icons.Filled.Star,
-                        contentDescription = "시작 아이콘",
-                        tint = MaterialTheme.colorScheme.onSurface,
-                        modifier = Modifier.size(40.dp)
-                    )
+                    Icon(imageVector = Icons.Filled.Star, contentDescription = "시작 아이콘", tint = MaterialTheme.colorScheme.onSurface, modifier = Modifier.size(40.dp))
                 }
             }
         },
@@ -217,18 +181,16 @@ fun TopTitleView(text: String,onNavigate: (String) -> Unit) {
                 onNavigate(HomeScreen.Home.name)
             }
         ) {
-            Icon(
-                imageVector = Icons.Filled.Home,
-                contentDescription = "시작 아이콘",
-                tint = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.size(50.dp).offset(y = 5.dp)
-            )
+            Icon(imageVector = Icons.Filled.Home, contentDescription = "시작 아이콘", tint = MaterialTheme.colorScheme.onSurface, modifier = Modifier.size(50.dp).offset(y = 5.dp))
         }
     }
 }
 
 @Composable
 fun BottomNavigationBar(onNavigate: (String) -> Unit) {
+    val viewModel: AppViewModel = AppViewModel.getInstance()
+    val data by viewModel.data.observeAsState()
+
     NavigationBar(
         modifier = Modifier.fillMaxWidth().fillMaxHeight(0.09F),
         containerColor = MaterialTheme.colorScheme.primary,
@@ -241,47 +203,97 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
             onClick = { onNavigate(HomeScreen.Home.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = 250.dp),
+            modifier = Modifier.offset(x = 250.dp).background(
+                if(data == "처음화면"){
+                    MaterialTheme.colorScheme.onSurface
+                }
+                else {
+                    MaterialTheme.colorScheme.primary
+                }
+            ),
             label = { BottomTextView("처음으로") },
             icon = { BottomIconView("처음으로", Icons.Filled.Home) },
             selected = false,
             onClick = { onNavigate(HomeScreen.Home.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = 200.dp),
+            modifier = Modifier.offset(x = 200.dp).background(
+                if(data == "직원안내"){
+                    MaterialTheme.colorScheme.onSurface
+                }
+                else {
+                    MaterialTheme.colorScheme.primary
+                }
+            ),
             label = { BottomTextView("직원안내") },
             icon = { BottomIconView("직원안내", Icons.Filled.DateRange) },
             selected = false,
             onClick = { onNavigate(EmployeeScreen.Employee.name) }
         )
         NavigationBarItem(label = { BottomTextView("청사안내") },
-            modifier = Modifier.offset(x = 150.dp),
+            modifier = Modifier.offset(x = 150.dp).background(
+                if(data == "청사안내"){
+                    MaterialTheme.colorScheme.onSurface
+                }
+                else {
+                    MaterialTheme.colorScheme.primary
+                }
+            ),
             icon = { BottomIconView("청사안내", Icons.Filled.LocationOn) },
             selected = false,
             onClick = { onNavigate(LocateScreen.Locate.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = 100.dp),
+            modifier = Modifier.offset(x = 100.dp).background(
+                if(data == "포토갤러리"){
+                    MaterialTheme.colorScheme.onSurface
+                }
+                else {
+                    MaterialTheme.colorScheme.primary
+                }
+            ),
             label = { BottomTextView("포토갤러리") },
             icon = { BottomIconView("포토갤러리", Icons.Filled.Favorite) },
             selected = false,
             onClick = { onNavigate(ImageScreen.Image.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = 50.dp),
+            modifier = Modifier.offset(x = 50.dp).background(
+                if(data == "홍보컨텐츠"){
+                    MaterialTheme.colorScheme.onSurface
+                }
+                else {
+                    MaterialTheme.colorScheme.primary
+                }
+            ),
             label = { BottomTextView("홍보컨텐츠") },
             icon = { BottomIconView("홍보컨텐츠", Icons.Filled.PlayArrow) },
             selected = false,
             onClick = { onNavigate(PromoteScreen.Promote.name) }
         )
         NavigationBarItem(
+            modifier = Modifier.background(
+                if(data == "공지사항"){
+                    MaterialTheme.colorScheme.onSurface
+                }
+                else {
+                    MaterialTheme.colorScheme.primary
+                }
+            ),
             label = { BottomTextView("공지사항") },
             icon = { BottomIconView("공지사항", Icons.Filled.Info) },
             selected = false,
             onClick = { onNavigate(InfoScreen.Info.name) }
         )
         NavigationBarItem(
-            modifier = Modifier.offset(x = (-50).dp),
+            modifier = Modifier.offset(x = (-50).dp).background(
+                if(data == "관광안내"){
+                    MaterialTheme.colorScheme.onSurface
+                }
+                else {
+                    MaterialTheme.colorScheme.primary
+                }
+            ),
             label = { BottomTextView("관광안내") },
             icon = { BottomIconView("관광안내", Icons.Filled.Person) },
             selected = false,
