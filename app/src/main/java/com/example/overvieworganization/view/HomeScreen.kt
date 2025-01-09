@@ -16,6 +16,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
@@ -68,55 +71,16 @@ fun HomeList(onNavigate: (String) -> Unit) {
                 verticalArrangement = Arrangement.spacedBy(20.dp)
                 //카드1에 있는 2가지 버튼을 구분
             ){
-                SecondTextButton(onNavigate, TourScreen.Tour.name, MaterialTheme.colorScheme.tertiary, "관광 안내", "민원실 좌석 배치도 및 직원 정보를", "한눈에 알아볼 수 있도록 소개합니다.", MaterialTheme.colorScheme.primary, Icons.Filled.Person, MaterialTheme.colorScheme.secondary)
-                SecondTextButton(onNavigate, EmployeeScreen.Employee.name, MaterialTheme.colorScheme.secondary, "직원 안내", "좌석배치도 및 담당자의 주요 업무를", "소개합니다.", MaterialTheme.colorScheme.tertiary, Icons.Filled.DateRange, MaterialTheme.colorScheme.tertiary)
+                SecondTextButton(onNavigate, TourScreen.Tour.name, MaterialTheme.colorScheme.tertiary, "관광 안내", "민원실 좌석 배치도 및 직원 정보를", "한눈에 알아볼 수 있도록 소개합니다.", MaterialTheme.colorScheme.primary, Icons.Filled.Person, MaterialTheme.colorScheme.onSurface)
+                SecondTextButton(onNavigate, EmployeeScreen.Employee.name, MaterialTheme.colorScheme.secondary, "직원안내", "좌석배치도 및 담당자의 주요 업무를", "소개합니다.", MaterialTheme.colorScheme.tertiary, Icons.Filled.DateRange, MaterialTheme.colorScheme.onSurface)
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(20.dp)
                 //카드2에 있는 3가지 버튼을 구분
             ) {
-                TextButton(
-                    modifier = Modifier.width(width = 250.dp).height(height = 140.dp).offset(y = 50.dp).background(MaterialTheme.colorScheme.primary),
-                    onClick = {
-                        onNavigate(ImageScreen.Image.name)
-                    }
-                ){
-                    Column(
-                        //카드2에 포토갤러리 버튼에서 제목과 소제목으로 구분
-                    ){
-                        Text(text = "포토갤러리", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
-                        Text(text = "Photo Gallery", fontSize = 15.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.tertiary)
-
-                    }
-                }
-                TextButton(
-                    modifier = Modifier.width(width = 250.dp).height(height = 140.dp).offset(y = 50.dp).background(MaterialTheme.colorScheme.primary),
-                    onClick = {
-                        onNavigate(LocateScreen.Locate.name)
-                    }
-                ){
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
-                        //카드2에 청사안내 버튼에서 제목과 소제목으로 구분
-                    ){
-                        Text(text = "청사안내", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
-                        Text(text = "Hall Information", fontSize = 15.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.tertiary)
-                    }
-                }
-                TextButton(
-                    modifier = Modifier.width(width = 250.dp).height(height = 140.dp).offset(y = 50.dp).background(MaterialTheme.colorScheme.primary),
-                    onClick = {
-                        onNavigate(InfoScreen.Info.name)
-                    }
-                ){
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
-                        //카드2에 공지사항 버튼에서 제목과 소제목으로 구분
-                    ){
-                        Text(text = "공지사항", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
-                        Text(text = "Notice & News", fontSize = 15.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.tertiary)
-                    }
-                }
+                ThirdTextButton(onNavigate, ImageScreen.Image.name, "포토갤러리", "Photo Gallery",  Icons.Filled.Favorite)
+                ThirdTextButton(onNavigate, ImageScreen.Image.name, "청사안내", "Hall Information",  Icons.Filled.LocationOn)
+                ThirdTextButton(onNavigate, ImageScreen.Image.name, "공지사항", "Notice & News",  Icons.Filled.Info)
             }
         }
     }
@@ -171,4 +135,33 @@ fun SecondTextButton(onNavigate: (String) -> Unit, route: String, color: Color, 
             modifier = Modifier.size(60.dp).offset(x = 30.dp, y = 50.dp)
         )
     }
+}
+
+@Composable
+fun ThirdTextButton(onNavigate: (String) -> Unit, route: String, titleText: String, bodyText: String, icon: ImageVector){
+    TextButton(
+        modifier = Modifier.width(width = 250.dp).height(height = 140.dp).offset(y = 50.dp).background(MaterialTheme.colorScheme.primary),
+        onClick = {
+            onNavigate(route)
+        }
+    ){
+        Column(
+            modifier = Modifier.offset(x = 50.dp)
+            //카드2에 포토갤러리 버튼에서 제목과 소제목으로 구분
+        ){
+            ThirdTextView(titleText, 25.sp, FontWeight.Bold)
+            ThirdTextView(bodyText, 15.sp, FontWeight.Normal)
+        }
+        Icon(
+            imageVector = icon,
+            contentDescription = "아이콘",
+            tint = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.size(40.dp).offset(x = (-120).dp, y = (0).dp)
+        )
+    }
+}
+
+@Composable
+fun ThirdTextView(text: String, size: TextUnit, weight: FontWeight) {
+    Text(text = text, fontSize = size, fontWeight = weight, color = MaterialTheme.colorScheme.tertiary)
 }

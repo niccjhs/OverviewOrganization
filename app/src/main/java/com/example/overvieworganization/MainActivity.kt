@@ -182,7 +182,7 @@ fun TopBar(onNavigate: (String) -> Unit) {
                     Icon(
                         imageVector = Icons.Filled.Star,
                         contentDescription = "시작 아이콘",
-                        tint = MaterialTheme.colorScheme.secondary,
+                        tint = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier.size(40.dp)
                     )
                 }
@@ -200,7 +200,7 @@ fun TopBar(onNavigate: (String) -> Unit) {
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
-            titleContentColor = MaterialTheme.colorScheme.secondary,
+            titleContentColor = MaterialTheme.colorScheme.onSurface,
         ),
     )
 }
@@ -220,7 +220,7 @@ fun TopTitleView(text: String,onNavigate: (String) -> Unit) {
             Icon(
                 imageVector = Icons.Filled.Home,
                 contentDescription = "시작 아이콘",
-                tint = MaterialTheme.colorScheme.secondary,
+                tint = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.size(50.dp).offset(y = 5.dp)
             )
         }
