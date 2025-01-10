@@ -27,21 +27,23 @@ fun EmployeeList(onNavigate: (String) -> Unit) {
         modifier = Modifier.fillMaxSize().padding(100.dp),
         horizontalArrangement = Arrangement.spacedBy(120.dp)
     ){
-        TextButton(
-            onClick = {
-
-            }
-        ) {
-            Text(text = "본청", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
-        }
-
-        TextButton(
-            onClick = {
-
-            }
-        ) {
-            Text(text = "읍면동", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
-        }
+        TitleTextButton(onNavigate, "본청")
+        TitleTextButton(onNavigate, "읍면동")
     }
+}
 
+@Composable
+fun TitleTextButton(onNavigate: (String) -> Unit, text: String){
+    TextButton(
+        onClick = {
+
+        }
+    ) {
+        TitleText(text)
+    }
+}
+
+@Composable
+fun TitleText(text: String){
+    Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
 }
