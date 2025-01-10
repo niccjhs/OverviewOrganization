@@ -4,13 +4,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -100,7 +98,92 @@ fun MainBodyFirstBodyText(text: String){
 
 @Composable
 fun MainBodySecond(){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodySecondTitle()
+        MainBodySecondBody()
+    }
+}
 
+@Composable
+fun MainBodySecondTitle(){
+    Row(
+        modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.onPrimary)
+    ){
+        Text(text = "부구청장", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.tertiary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
+    }
+}
+
+@Composable
+fun MainBodySecondBody(){
+    Column(
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ){
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("행정지원과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("기획예산과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("지역경제과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("복지정책과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("주택과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("안전관리과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("도시전략과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("보건관리과")
+            }
+        }
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ){
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("자치행정과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("홍보소통과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("일자리정책과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("복지지원과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("건설관리과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("도로과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("도시계획과")
+            }
+            Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+                MainBodySecondBodyText("건강관리과")
+            }
+        }
+    }
+
+}
+
+@Composable
+fun MainBodySecondBodyText(text: String){
+    Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
 }
 
 @Composable
@@ -116,6 +199,7 @@ fun TitleTextButton(onNavigate: (String) -> Unit, text: String){
         TitleText(text)
     }
 }
+
 @Composable
 fun TitleText(text: String){
     Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
