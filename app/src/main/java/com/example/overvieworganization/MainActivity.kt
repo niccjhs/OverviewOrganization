@@ -82,42 +82,21 @@ fun MainScreen() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-            TopBar {
-                navController.navigate(it) {}
-            }
+            TopBar { navController.navigate(it) {} }
         },
         bottomBar = {
-            BottomNavigationBar {
-                navController.navigate(it) {}
-            }
+            BottomNavigationBar { navController.navigate(it) {} }
         },
     ) { innerPadding ->
-        NavHost(navController = navController, startDestination = HomeScreen.Home.name, modifier = Modifier.padding(innerPadding),
-        ) {
-            composable(route = HomeScreen.Home.name) {
-                HomeList() { navController.navigate(it) {} }
-            }
-            composable(route = EmployeeScreen.Employee.name) {
-                EmployeeList() { navController.navigate(it) {} }
-            }
-            composable(route = EmployeeScreen.Dong.name) {
-                DongList() { navController.navigate(it) {} }
-            }
-            composable(route = LocateScreen.Locate.name) {
-                LocateList()
-            }
-            composable(route = ImageScreen.Image.name) {
-                ImageList()
-            }
-            composable(route = PromoteScreen.Promote.name) {
-                PromoteList()
-            }
-            composable(route = InfoScreen.Info.name) {
-                InfoList()
-            }
-            composable(route = TourScreen.Tour.name) {
-                TourList()
-            }
+        NavHost(navController = navController, startDestination = HomeScreen.Home.name, modifier = Modifier.padding(innerPadding)) {
+            composable(route = HomeScreen.Home.name) { HomeList() { navController.navigate(it) {} } }
+            composable(route = EmployeeScreen.Employee.name) { EmployeeList() { navController.navigate(it) {} } }
+            composable(route = EmployeeScreen.Dong.name) { DongList() { navController.navigate(it) {} } }
+            composable(route = LocateScreen.Locate.name) { LocateList() }
+            composable(route = ImageScreen.Image.name) { ImageList() }
+            composable(route = PromoteScreen.Promote.name) { PromoteList() }
+            composable(route = InfoScreen.Info.name) { InfoList() }
+            composable(route = TourScreen.Tour.name) { TourList() }
         }
     }
 }
@@ -170,32 +149,14 @@ fun TopBar(onNavigate: (String) -> Unit) {
 }
 
 @Composable
-fun TopTitleView(text: String,onNavigate: (String) -> Unit) {
-    Row(
-        modifier = Modifier.offset(x = 15.dp, y = 20.dp),//텍스트와 아이콘 모두 오른쪽으로 이동
-        horizontalArrangement = Arrangement.spacedBy(20.dp)// 아이콘만 오른쪽으로 이동
-    ) {
-        Text(text, fontSize = 40.sp, fontWeight = FontWeight.Bold)
-        IconButton(
-            onClick = {
-                onNavigate(HomeScreen.Home.name)
-            }
-        ) {
-            Icon(imageVector = Icons.Filled.Home, contentDescription = "시작 아이콘", tint = MaterialTheme.colorScheme.onSurface, modifier = Modifier.size(50.dp).offset(y = 5.dp))
-        }
-    }
-}
-
-@Composable
 fun BottomNavigationBar(onNavigate: (String) -> Unit) {
     val viewModel: AppViewModel = AppViewModel.getInstance()
     val data by viewModel.data.observeAsState()
 
     NavigationBar(
         modifier = Modifier.fillMaxHeight(0.09F),
-        containerColor = MaterialTheme.colorScheme.primary,
-
-        ) {
+        containerColor = MaterialTheme.colorScheme.primary
+    ) {
         NavigationBarItem(
             label = { Text("방문을 환영합니다.", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary) },
             icon = {},
@@ -217,8 +178,8 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
                     MaterialTheme.colorScheme.primary
                 }
             ),
-            label = { BottomTextView("처음으로") },
-            icon = { BottomIconView("처음으로", Icons.Filled.Home) },
+            label = { BottomText("처음으로") },
+            icon = { BottomIcon("처음으로", Icons.Filled.Home) },
             selected = false,
             onClick = { onNavigate(HomeScreen.Home.name) }
         )
@@ -231,12 +192,12 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
                     MaterialTheme.colorScheme.primary
                 }
             ),
-            label = { BottomTextView("직원안내") },
-            icon = { BottomIconView("직원안내", Icons.Filled.DateRange) },
+            label = { BottomText("직원안내") },
+            icon = { BottomIcon("직원안내", Icons.Filled.DateRange) },
             selected = false,
             onClick = { onNavigate(EmployeeScreen.Employee.name) }
         )
-        NavigationBarItem(label = { BottomTextView("청사안내") },
+        NavigationBarItem(label = { BottomText("청사안내") },
             modifier = Modifier.background(
                 if(data == "청사안내"){
                     MaterialTheme.colorScheme.secondary
@@ -245,7 +206,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
                     MaterialTheme.colorScheme.primary
                 }
             ),
-            icon = { BottomIconView("청사안내", Icons.Filled.LocationOn) },
+            icon = { BottomIcon("청사안내", Icons.Filled.LocationOn) },
             selected = false,
             onClick = { onNavigate(LocateScreen.Locate.name) }
         )
@@ -258,8 +219,8 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
                     MaterialTheme.colorScheme.primary
                 }
             ),
-            label = { BottomTextView("포토갤러리") },
-            icon = { BottomIconView("포토갤러리", Icons.Filled.Favorite) },
+            label = { BottomText("포토갤러리") },
+            icon = { BottomIcon("포토갤러리", Icons.Filled.Favorite) },
             selected = false,
             onClick = { onNavigate(ImageScreen.Image.name) }
         )
@@ -272,8 +233,8 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
                     MaterialTheme.colorScheme.primary
                 }
             ),
-            label = { BottomTextView("홍보컨텐츠") },
-            icon = { BottomIconView("홍보컨텐츠", Icons.Filled.PlayArrow) },
+            label = { BottomText("홍보컨텐츠") },
+            icon = { BottomIcon("홍보컨텐츠", Icons.Filled.PlayArrow) },
             selected = false,
             onClick = { onNavigate(PromoteScreen.Promote.name) }
         )
@@ -286,8 +247,8 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
                     MaterialTheme.colorScheme.primary
                 }
             ),
-            label = { BottomTextView("공지사항") },
-            icon = { BottomIconView("공지사항", Icons.Filled.Info) },
+            label = { BottomText("공지사항") },
+            icon = { BottomIcon("공지사항", Icons.Filled.Info) },
             selected = false,
             onClick = { onNavigate(InfoScreen.Info.name) }
         )
@@ -300,8 +261,8 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
                     MaterialTheme.colorScheme.primary
                 }
             ),
-            label = { BottomTextView("관광안내") },
-            icon = { BottomIconView("관광안내", Icons.Filled.Person) },
+            label = { BottomText("관광안내") },
+            icon = { BottomIcon("관광안내", Icons.Filled.Person) },
             selected = false,
             onClick = { onNavigate(TourScreen.Tour.name) }
         )
@@ -309,7 +270,24 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
 }
 
 @Composable
-fun BottomIconView(text: String, icon: ImageVector) {
+fun TopTitleView(text: String,onNavigate: (String) -> Unit) {
+    Row(
+        modifier = Modifier.offset(x = 15.dp, y = 20.dp),//텍스트와 아이콘 모두 오른쪽으로 이동
+        horizontalArrangement = Arrangement.spacedBy(20.dp)// 아이콘만 오른쪽으로 이동
+    ) {
+        Text(text, fontSize = 40.sp, fontWeight = FontWeight.Bold)
+        IconButton(
+            onClick = {
+                onNavigate(HomeScreen.Home.name)
+            }
+        ) {
+            Icon(imageVector = Icons.Filled.Home, contentDescription = "시작 아이콘", tint = MaterialTheme.colorScheme.onSurface, modifier = Modifier.size(50.dp).offset(y = 5.dp))
+        }
+    }
+}
+
+@Composable
+fun BottomIcon(text: String, icon: ImageVector) {
     Icon(
         icon,
         contentDescription = "${text} 리스트 아이콘",
@@ -318,6 +296,6 @@ fun BottomIconView(text: String, icon: ImageVector) {
 }
 
 @Composable
-fun BottomTextView(text: String) {
-    Text(text, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
+fun BottomText(text: String) {
+    Text(text = text, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
 }

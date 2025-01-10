@@ -1,6 +1,5 @@
 package com.example.overvieworganization.view
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -69,6 +68,18 @@ fun DongList(onNavigate: (String) -> Unit) {
 }
 
 @Composable
+fun MainBody(){
+    Column(
+        modifier = Modifier.offset(x = 10.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodyFirst()
+        MainBodySecond()
+        MainBodyThird()
+    }
+}
+
+@Composable
 fun DongBody(){
     Column(
         modifier = Modifier.offset(x = 100.dp),
@@ -77,6 +88,16 @@ fun DongBody(){
         DongBodyFirst()
         DongBodySecond()
         DongBodyThird()
+    }
+}
+
+@Composable
+fun MainBodyFirst(){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodyFirstTitle()
+        MainBodyFirstBody()
     }
 }
 
@@ -97,6 +118,16 @@ fun DongBodyFirst(){
 }
 
 @Composable
+fun MainBodySecond(){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodySecondTitle()
+        MainBodySecondBody()
+    }
+}
+
+@Composable
 fun DongBodySecond(){
     Row(
         horizontalArrangement = Arrangement.spacedBy(20.dp)
@@ -109,6 +140,16 @@ fun DongBodySecond(){
         DongBodyText("기양1동")
         DongBodyText("기양1동")
         DongBodyText("기양1동")
+    }
+}
+
+@Composable
+fun MainBodyThird(){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodyThirdTitle()
+        MainBodyThirdBody()
     }
 }
 
@@ -130,28 +171,6 @@ fun DongBodyText(text: String){
         modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)
     ){
         Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
-    }
-}
-
-@Composable
-fun MainBody(){
-    Column(
-        modifier = Modifier.offset(x = 10.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
-    ){
-        MainBodyFirst()
-        MainBodySecond()
-        MainBodyThird()
-    }
-}
-
-@Composable
-fun MainBodyFirst(){
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ){
-        MainBodyFirstTitle()
-        MainBodyFirstBody()
     }
 }
 
@@ -182,16 +201,6 @@ fun MainBodyFirstBodyText(text: String){
         modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.onSurface)
     ){
         Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
-    }
-}
-
-@Composable
-fun MainBodySecond(){
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ){
-        MainBodySecondTitle()
-        MainBodySecondBody()
     }
 }
 
@@ -240,16 +249,6 @@ fun MainBodySecondBodyShape(text: String){
 @Composable
 fun MainBodySecondBodyText(text: String){
     Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
-}
-
-@Composable
-fun MainBodyThird(){
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ){
-        MainBodyThirdTitle()
-        MainBodyThirdBody()
-    }
 }
 
 @Composable

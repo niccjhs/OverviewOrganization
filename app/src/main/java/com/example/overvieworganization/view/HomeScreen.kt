@@ -4,30 +4,24 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
@@ -53,14 +47,14 @@ fun HomeList(onNavigate: (String) -> Unit) {
             modifier = Modifier.size(width = 430.dp, height = 220.dp).offset(x = 50.dp, y = 50.dp)
             //text 안에 있는 text들 구분
         ) {
-            FirstKorTextView("한눈에")
-            FirstKorTextView("새로운 세상을")
-            FirstKorTextView("만나다.")
+            FirstKorText("한눈에")
+            FirstKorText("새로운 세상을")
+            FirstKorText("만나다.")
             Row(
                 //text에 영어 글자 폰트 구분
             ){
-                FirstEngTextView("Meet a new World ", FontWeight.Normal)
-                FirstEngTextView("at a glance.", FontWeight.Bold)
+                FirstEngText("Meet a new World ", FontWeight.Normal)
+                FirstEngText("at a glance.", FontWeight.Bold)
             }
         }
         Row(
@@ -75,7 +69,6 @@ fun HomeList(onNavigate: (String) -> Unit) {
                 SecondTextButton(onNavigate, EmployeeScreen.Employee.name, MaterialTheme.colorScheme.secondary, "직원안내", "좌석배치도 및 담당자의 주요 업무를", "소개합니다.", MaterialTheme.colorScheme.tertiary, Icons.Filled.DateRange, MaterialTheme.colorScheme.onSurface)
             }
             Column(
-
                 verticalArrangement = Arrangement.spacedBy(20.dp)
                 //카드2에 있는 3가지 버튼을 구분
             ) {
@@ -85,26 +78,6 @@ fun HomeList(onNavigate: (String) -> Unit) {
             }
         }
     }
-}
-
-@Composable
-fun FirstKorTextView(text: String) {
-    Text(text, fontSize = 40.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
-}
-
-@Composable
-fun FirstEngTextView(text: String, bold: FontWeight) {
-    Text(text = text, fontSize = 30.sp, fontWeight = bold, color = MaterialTheme.colorScheme.tertiary)
-}
-
-@Composable
-fun SecondTitleTextView(text: String, color: Color) {
-    Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.ExtraBold, color = color)
-}
-
-@Composable
-fun SecondBodyTextView(text: String, color: Color) {
-    Text(text = text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = color)
 }
 
 @Composable
@@ -120,13 +93,13 @@ fun SecondTextButton(onNavigate: (String) -> Unit, route: String, color: Color, 
             verticalArrangement = Arrangement.spacedBy(10.dp)
             //카드1에 관광안내 버튼에서 제목과 소제목 구분
         ){
-            SecondTitleTextView(titleText, textColor)
+            SecondTitleText(titleText, textColor)
             Column(
                 verticalArrangement = Arrangement.spacedBy(0.dp)
                 //카드1에 관광안내 버튼에서 소제목을 구분
             ){
-                SecondBodyTextView(bodyFirstText, textColor)
-                SecondBodyTextView(bodySecondText, textColor)
+                SecondBodyText(bodyFirstText, textColor)
+                SecondBodyText(bodySecondText, textColor)
             }
         }
         Icon(
@@ -150,8 +123,8 @@ fun ThirdTextButton(onNavigate: (String) -> Unit, route: String, titleText: Stri
             modifier = Modifier.offset(x = 50.dp)
             //카드2에 포토갤러리 버튼에서 제목과 소제목으로 구분
         ){
-            ThirdTextView(titleText, 25.sp, FontWeight.Bold)
-            ThirdTextView(bodyText, 15.sp, FontWeight.Normal)
+            ThirdText(titleText, 25.sp, FontWeight.Bold)
+            ThirdText(bodyText, 15.sp, FontWeight.Normal)
         }
         Icon(
             imageVector = icon,
@@ -163,6 +136,26 @@ fun ThirdTextButton(onNavigate: (String) -> Unit, route: String, titleText: Stri
 }
 
 @Composable
-fun ThirdTextView(text: String, size: TextUnit, weight: FontWeight) {
+fun FirstKorText(text: String) {
+    Text(text = text, fontSize = 40.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
+}
+
+@Composable
+fun FirstEngText(text: String, bold: FontWeight) {
+    Text(text = text, fontSize = 30.sp, fontWeight = bold, color = MaterialTheme.colorScheme.tertiary)
+}
+
+@Composable
+fun SecondTitleText(text: String, color: Color) {
+    Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.ExtraBold, color = color)
+}
+
+@Composable
+fun SecondBodyText(text: String, color: Color) {
+    Text(text = text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = color)
+}
+
+@Composable
+fun ThirdText(text: String, size: TextUnit, weight: FontWeight) {
     Text(text = text, fontSize = size, fontWeight = weight, color = MaterialTheme.colorScheme.tertiary)
 }
