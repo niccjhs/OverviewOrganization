@@ -79,8 +79,8 @@ fun HomeList(onNavigate: (String) -> Unit) {
                 //카드2에 있는 3가지 버튼을 구분
             ) {
                 ThirdTextButton(onNavigate, ImageScreen.Image.name, "포토갤러리", "Photo Gallery",  Icons.Filled.Favorite)
-                ThirdTextButton(onNavigate, ImageScreen.Image.name, "청사안내", "Hall Information",  Icons.Filled.LocationOn)
-                ThirdTextButton(onNavigate, ImageScreen.Image.name, "공지사항", "Notice & News",  Icons.Filled.Info)
+                ThirdTextButton(onNavigate, LocateScreen.Locate.name, "청사안내", "Hall Information",  Icons.Filled.LocationOn)
+                ThirdTextButton(onNavigate, InfoScreen.Info.name, "공지사항", "Notice & News",  Icons.Filled.Info)
             }
         }
     }
