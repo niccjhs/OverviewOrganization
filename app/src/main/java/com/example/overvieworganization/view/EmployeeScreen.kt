@@ -30,6 +30,7 @@ enum class EmployeeScreen {
 fun EmployeeList(onNavigate: (String) -> Unit) {
     val viewModel: AppViewModel = AppViewModel.getInstance()
     viewModel.setData("직원안내")
+    viewModel.setEmployee("본청")
 
     Column(
         modifier = Modifier.fillMaxSize().padding(50.dp),
@@ -48,6 +49,10 @@ fun EmployeeList(onNavigate: (String) -> Unit) {
 
 @Composable
 fun DongList(onNavigate: (String) -> Unit) {
+    val viewModel: AppViewModel = AppViewModel.getInstance()
+    viewModel.setData("직원안내")
+    viewModel.setEmployee("읍면동")
+
     Column(
         modifier = Modifier.fillMaxSize().padding(50.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -310,11 +315,9 @@ fun TitleTextButton(onNavigate: (String) -> Unit, text: String){
         onClick = {
             if(text == "읍면동"){
                 onNavigate(EmployeeScreen.Dong.name)
-                Log.e("test1", "test1")
             }
             else if(text == "본청"){
                 onNavigate(EmployeeScreen.Employee.name)
-                Log.e("test2", "test2")
             }
         }
     ) {
@@ -324,5 +327,12 @@ fun TitleTextButton(onNavigate: (String) -> Unit, text: String){
 
 @Composable
 fun TitleText(text: String){
-    Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
+    val viewModel: AppViewModel = AppViewModel.getInstance()
+
+    if((text == "본청" && viewModel.employee.value.toString() == "본청")||(text == "읍면동" && viewModel.employee.value.toString() == "읍면동")){
+        Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.ExtraBold, color = MaterialTheme.colorScheme.tertiary)
+    }
+    else{
+        Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.Thin, color = MaterialTheme.colorScheme.tertiary)
+    }
 }

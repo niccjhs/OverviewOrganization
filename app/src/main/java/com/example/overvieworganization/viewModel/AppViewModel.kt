@@ -8,9 +8,15 @@ class AppViewModel private constructor() : ViewModel() {
     private val _data = MutableLiveData<String>()
     val data: LiveData<String>
         get() = _data
-
     fun setData(newData: String) {
         _data.value = newData
+    }
+
+    private val _employee = MutableLiveData<String>()
+    val employee: LiveData<String>
+        get() = _employee
+    fun setEmployee(newEmployee: String){
+        _employee.value = newEmployee
     }
 
     companion object {
