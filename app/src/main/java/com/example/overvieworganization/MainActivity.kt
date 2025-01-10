@@ -45,6 +45,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.overvieworganization.ui.theme.OverviewOrganizationTheme
+import com.example.overvieworganization.view.DongList
 import com.example.overvieworganization.view.EmployeeList
 import com.example.overvieworganization.view.EmployeeScreen
 import com.example.overvieworganization.view.HomeList
@@ -98,6 +99,9 @@ fun MainScreen() {
             }
             composable(route = EmployeeScreen.Employee.name) {
                 EmployeeList() { navController.navigate(it) {} }
+            }
+            composable(route = EmployeeScreen.Dong.name) {
+                DongList() { navController.navigate(it) {} }
             }
             composable(route = LocateScreen.Locate.name) {
                 LocateList()

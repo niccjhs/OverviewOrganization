@@ -1,5 +1,6 @@
 package com.example.overvieworganization.view
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,7 +22,8 @@ import androidx.compose.ui.unit.sp
 import com.example.overvieworganization.viewModel.AppViewModel
 
 enum class EmployeeScreen {
-    Employee
+    Employee,
+    Dong
 }
 
 @Composable
@@ -41,6 +43,88 @@ fun EmployeeList(onNavigate: (String) -> Unit) {
             Text(text = "검색하기", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Right)
         }
         MainBody()
+    }
+}
+
+@Composable
+fun DongList(onNavigate: (String) -> Unit) {
+    Column(
+        modifier = Modifier.fillMaxSize().padding(50.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(120.dp)
+        ){
+            TitleTextButton(onNavigate, "본청")
+            TitleTextButton(onNavigate, "읍면동")
+            Text(text = "검색하기", fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Right)
+        }
+        DongBody()
+    }
+}
+
+@Composable
+fun DongBody(){
+    Column(
+        modifier = Modifier.offset(x = 100.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        DongBodyFirst()
+        DongBodySecond()
+        DongBodyThird()
+    }
+}
+
+@Composable
+fun DongBodyFirst(){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(20.dp)
+    ){
+        DongBodyText("염창동")
+        DongBodyText("화곡4동")
+        DongBodyText("등촌2등")
+        DongBodyText("등촌3등")
+        DongBodyText("화곡본동")
+        DongBodyText("화곡본동")
+        DongBodyText("화곡본동")
+        DongBodyText("화곡본동")
+    }
+}
+
+@Composable
+fun DongBodySecond(){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(20.dp)
+    ){
+        DongBodyText("화곡4동")
+        DongBodyText("화곡6동")
+        DongBodyText("화곡8동")
+        DongBodyText("우장산동")
+        DongBodyText("기양1동")
+        DongBodyText("기양1동")
+        DongBodyText("기양1동")
+        DongBodyText("기양1동")
+    }
+}
+
+@Composable
+fun DongBodyThird(){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(20.dp)
+    ){
+        DongBodyText("공항동")
+        DongBodyText("방화1동")
+        DongBodyText("방화2동")
+        DongBodyText("방화3동")
+    }
+}
+
+@Composable
+fun DongBodyText(text: String){
+    Row(
+        modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)
+    ){
+        Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
     }
 }
 
@@ -223,7 +307,16 @@ fun MainBodyThirdBodyText(text: String){
 @Composable
 fun TitleTextButton(onNavigate: (String) -> Unit, text: String){
     TextButton(
-        onClick = {}
+        onClick = {
+            if(text == "읍면동"){
+                onNavigate(EmployeeScreen.Dong.name)
+                Log.e("test1", "test1")
+            }
+            else if(text == "본청"){
+                onNavigate(EmployeeScreen.Employee.name)
+                Log.e("test2", "test2")
+            }
+        }
     ) {
         TitleText(text)
     }
@@ -233,4 +326,3 @@ fun TitleTextButton(onNavigate: (String) -> Unit, text: String){
 fun TitleText(text: String){
     Text(text = text, fontSize = 30.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)
 }
-
