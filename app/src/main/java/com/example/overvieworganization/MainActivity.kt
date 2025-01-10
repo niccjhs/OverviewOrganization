@@ -191,7 +191,7 @@ fun BottomNavigationBar(onNavigate: (String) -> Unit) {
         modifier = Modifier.fillMaxHeight(0.09F),
         containerColor = MaterialTheme.colorScheme.primary,
 
-    ) {
+        ) {
         NavigationBarItem(
             label = { Text("방문을 환영합니다.", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary) },
             icon = {},

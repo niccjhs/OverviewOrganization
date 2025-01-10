@@ -14,7 +14,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -156,7 +155,69 @@ fun MainBodySecondBodyText(text: String){
 
 @Composable
 fun MainBodyThird(){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodyThirdTitle()
+        MainBodyThirdBody()
+    }
+}
 
+@Composable
+fun MainBodyThirdTitle(){
+    Row(
+        modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.primary)
+    ){
+        Text(text = "감사담당관", fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.tertiary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
+    }
+}
+
+@Composable
+fun MainBodyThirdBody(){
+    Column(
+        verticalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodyThirdBodyUi("문화예술과", "재무과", "자원순환과", "생활보장과", "도시디자인과", "물관리과", "도시재생과", "의약과")
+        MainBodyThirdBodyUi("체육관광과", "세무관리과", "녹색환경과", "출산보육과", "건축과", "교통행정과", "신청사건립추진과", "위생관리과")
+        MainBodyThirdBodyUi("교육지원과", "재산세과", "스마트정보과", "아동청소년과", "공원녹지과", "주차관리과", "", "")
+        MainBodyThirdBodyUi("민원여권과", "지방소득세과", "", "장애인복지과", "부동산정보과", "안전체험관", "", "")
+        MainBodyThirdBodyUi("", "", "", "어르신복지과", "", "", "", "")
+    }
+}
+
+@Composable
+fun MainBodyThirdBodyUi(text1: String, text2: String, text3: String, text4: String, text5: String, text6: String, text7: String, text8: String){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodyThirdBodyShape(text1)
+        MainBodyThirdBodyShape(text2)
+        MainBodyThirdBodyShape(text3)
+        MainBodyThirdBodyShape(text4)
+        MainBodyThirdBodyShape(text5)
+        MainBodyThirdBodyShape(text6)
+        MainBodyThirdBodyShape(text7)
+        MainBodyThirdBodyShape(text8)
+    }
+}
+
+@Composable
+fun MainBodyThirdBodyShape(text: String){
+    if(text != ""){
+        Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+            MainBodyThirdBodyText(text)
+        }
+    }
+    else{
+        Row(modifier = Modifier.size(width = 180.dp, height = 50.dp)){
+
+        }
+    }
+}
+
+@Composable
+fun MainBodyThirdBodyText(text: String){
+    Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
 }
 
 @Composable
