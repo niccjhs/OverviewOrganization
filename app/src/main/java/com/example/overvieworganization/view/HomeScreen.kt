@@ -75,6 +75,7 @@ fun HomeList(onNavigate: (String) -> Unit) {
                 SecondTextButton(onNavigate, EmployeeScreen.Employee.name, MaterialTheme.colorScheme.secondary, "직원안내", "좌석배치도 및 담당자의 주요 업무를", "소개합니다.", MaterialTheme.colorScheme.tertiary, Icons.Filled.DateRange, MaterialTheme.colorScheme.onSurface)
             }
             Column(
+
                 verticalArrangement = Arrangement.spacedBy(20.dp)
                 //카드2에 있는 3가지 버튼을 구분
             ) {
