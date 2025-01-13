@@ -1,5 +1,10 @@
 [versions]
 agp = "8.7.3"
+converterGson = "2.11.0"
+converterScalars = "2.9.0"
+dagger = "2.51.1"
+exoplayerCore = "2.19.1"
+glide = "4.12.0"
 gson = "2.10.1"
 jsoup = "1.17.2"
 kotlin = "2.0.0"
@@ -7,19 +12,32 @@ coreKtx = "1.10.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+library = "2.0"
+libraryVersion = "2.3"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
 composeBom = "2024.04.01"
 lifecycleViewmodelCompose = "2.8.7"
 navigationCompose = "2.8.5"
+preferenceVersion = "1.2.1"
+retrofit = "2.11.0"
 runtimeLivedata = "1.7.6"
 
 [libraries]
+androidanimations-library = { module = "com.daimajia.androidanimations:library", version.ref = "libraryVersion" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "runtimeLivedata" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+converter-scalars = { module = "com.squareup.retrofit2:converter-scalars", version.ref = "converterScalars" }
+dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+exoplayer-core = { module = "com.google.android.exoplayer:exoplayer-core", version.ref = "exoplayerCore" }
+exoplayer-dash = { module = "com.google.android.exoplayer:exoplayer-dash", version.ref = "exoplayerCore" }
+exoplayer-ui = { module = "com.google.android.exoplayer:exoplayer-ui", version.ref = "exoplayerCore" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 gson = { module = "com.google.code.gson:gson" }
 jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
@@ -36,6 +54,12 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+library = { module = "com.daimajia.easing:library", version.ref = "library" }
+lombox = { module = "org.projectlombox:lombox" }
+org-projectlombox-lombox = { module = "org.projectlombox:lombox" }
+preference = { module = "androidx.preference:preference", version.ref = "preferenceVersion" }
+projectlombox-lombox = { module = "org.projectlombox:lombox" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
