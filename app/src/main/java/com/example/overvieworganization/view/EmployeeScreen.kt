@@ -224,29 +224,6 @@ fun MainBodySecondBody(){
 }
 
 @Composable
-fun MainBodySecondBodyUi(text1: String, text2: String, text3: String, text4: String, text5: String, text6: String, text7: String, text8: String){
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ){
-        MainBodySecondBodyShape(text1)
-        MainBodySecondBodyShape(text2)
-        MainBodySecondBodyShape(text3)
-        MainBodySecondBodyShape(text4)
-        MainBodySecondBodyShape(text5)
-        MainBodySecondBodyShape(text6)
-        MainBodySecondBodyShape(text7)
-        MainBodySecondBodyShape(text8)
-    }
-}
-
-@Composable
-fun MainBodySecondBodyShape(text: String){
-    Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
-        MainBodySecondBodyText(text)
-    }
-}
-
-@Composable
 fun MainBodySecondBodyText(text: String){
     Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
 }
@@ -274,6 +251,27 @@ fun MainBodyThirdBody(){
 }
 
 @Composable
+fun MainBodyThirdBodyText(text: String){
+    Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
+}
+
+@Composable
+fun MainBodySecondBodyUi(text1: String, text2: String, text3: String, text4: String, text5: String, text6: String, text7: String, text8: String){
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
+    ){
+        MainBodySecondBodyShape(text1)
+        MainBodySecondBodyShape(text2)
+        MainBodySecondBodyShape(text3)
+        MainBodySecondBodyShape(text4)
+        MainBodySecondBodyShape(text5)
+        MainBodySecondBodyShape(text6)
+        MainBodySecondBodyShape(text7)
+        MainBodySecondBodyShape(text8)
+    }
+}
+
+@Composable
 fun MainBodyThirdBodyUi(text1: String, text2: String, text3: String, text4: String, text5: String, text6: String, text7: String, text8: String){
     Row(
         horizontalArrangement = Arrangement.spacedBy(10.dp)
@@ -290,6 +288,13 @@ fun MainBodyThirdBodyUi(text1: String, text2: String, text3: String, text4: Stri
 }
 
 @Composable
+fun MainBodySecondBodyShape(text: String){
+    Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
+        MainBodySecondBodyText(text)
+    }
+}
+
+@Composable
 fun MainBodyThirdBodyShape(text: String){
     if(text != ""){
         Row(modifier = Modifier.size(width = 180.dp, height = 50.dp).background(MaterialTheme.colorScheme.tertiary)){
@@ -301,11 +306,6 @@ fun MainBodyThirdBodyShape(text: String){
 
         }
     }
-}
-
-@Composable
-fun MainBodyThirdBodyText(text: String){
-    Text(text = text, fontSize = 20.sp, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.primary, modifier = Modifier.offset(y = 10.dp).fillMaxWidth(), textAlign = TextAlign.Center)
 }
 
 @Composable

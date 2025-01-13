@@ -2,6 +2,8 @@ package com.example.overvieworganization
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
+import android.preference.PreferenceManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -61,13 +63,30 @@ import com.example.overvieworganization.view.PromoteScreen
 import com.example.overvieworganization.view.TourList
 import com.example.overvieworganization.view.TourScreen
 import com.example.overvieworganization.viewModel.AppViewModel
+import com.google.gson.JsonParser
 import java.text.SimpleDateFormat
 import java.util.Calendar
+
+var mainVideoModeHandler: Handler? = null
+var mainVideoModeRunnable: Runnable? = null
+var jsonParser: JsonParser? = null
+var teamCode: String? = null
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        if (mainVideoModeHandler != null) {
+            mainVideoModeHandler!!.removeCallbacksAndMessages(null)
+            mainVideoModeHandler!!.getLooper().quitSafely()
+            mainVideoModeRunnable = Runnable {}
+        }
+        val preferences = PreferenceManager.getDefaultSharedPreferences(
+            baseContext
+        )
+
+
         setContent {
             OverviewOrganizationTheme {
                 MainScreen()
@@ -79,6 +98,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -108,7 +128,9 @@ fun TopBar(onNavigate: (String) -> Unit) {
     val viewModel: AppViewModel = AppViewModel.getInstance()
     val data by viewModel.data.observeAsState("처음화면")
     TopAppBar(
-        modifier = Modifier.fillMaxWidth().fillMaxHeight(0.09F),
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(0.09F),
         title = {
             when (data) {
                 "처음화면" -> { TopTitleView("처음화면",onNavigate) }
@@ -281,7 +303,9 @@ fun TopTitleView(text: String,onNavigate: (String) -> Unit) {
                 onNavigate(HomeScreen.Home.name)
             }
         ) {
-            Icon(imageVector = Icons.Filled.Home, contentDescription = "시작 아이콘", tint = MaterialTheme.colorScheme.onSurface, modifier = Modifier.size(50.dp).offset(y = 5.dp))
+            Icon(imageVector = Icons.Filled.Home, contentDescription = "시작 아이콘", tint = MaterialTheme.colorScheme.onSurface, modifier = Modifier
+                .size(50.dp)
+                .offset(y = 5.dp))
         }
     }
 }
@@ -291,7 +315,9 @@ fun BottomIcon(text: String, icon: ImageVector) {
     Icon(
         icon,
         contentDescription = "${text} 리스트 아이콘",
-        modifier = Modifier.size(40.dp).background(color = MaterialTheme.colorScheme.tertiary)
+        modifier = Modifier
+            .size(40.dp)
+            .background(color = MaterialTheme.colorScheme.tertiary)
     )
 }
 

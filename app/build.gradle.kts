@@ -40,6 +40,13 @@ android {
 }
 
 dependencies {
+//    // ( json 관련 )
+    //implementation ("com.google.code.gson:gson:2.10.1")
+    //implementation ("org.jsoup:jsoup:1.17.2")
+    implementation (libs.google.gson)
+    implementation (libs.jsoup)
+
+
     // Note: Navigation 사용하기 위해 추가
 //    implementation("androidx.navigation:navigation-compose:2.8.5")
     implementation(libs.androidx.navigation.compose)
