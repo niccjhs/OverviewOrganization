@@ -1,4 +1,7 @@
-/test
-Test.kt
+/pojo
+/pojo/gsonPojo
+/utill
+/utill/local/converter
+JsonParser.kt
 
 /build
