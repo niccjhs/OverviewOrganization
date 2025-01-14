@@ -77,6 +77,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        setContent {
+            OverviewOrganizationTheme {
+                MainScreen()
+            }
+        }
+
         if (mainVideoModeHandler != null) {
             mainVideoModeHandler!!.removeCallbacksAndMessages(null)
             mainVideoModeHandler!!.getLooper().quitSafely()
@@ -85,13 +91,7 @@ class MainActivity : ComponentActivity() {
         val preferences = PreferenceManager.getDefaultSharedPreferences(
             baseContext
         )
-
-
-        setContent {
-            OverviewOrganizationTheme {
-                MainScreen()
-            }
-        }
+        
     }
 }
 
