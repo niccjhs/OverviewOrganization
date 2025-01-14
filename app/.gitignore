@@ -1,7 +1,8 @@
+/first
+First.kt
 /pojo
-/pojo/gsonPojo
-/utill
-/utill/local/converter
+/util
 JsonParser.kt
+
 
 /build
