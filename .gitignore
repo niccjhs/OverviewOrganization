@@ -1,3 +1,9 @@
+/first
+First.kt
+/pojo
+/util
+JsonParser.kt
+/second
 
 *.iml
 .gradle
